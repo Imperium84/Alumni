@@ -1,0 +1,58 @@
+{% extends "base.html.twig" %}
+{% block body %}
+    <main>
+        <section id="hautMain">
+            <h1>Bienvenue sur l'annuaire des anciens élèves du Greta</h1>
+            <h3>Faites votre recherche sur l'annuraire de nos anciens élèves et accéder
+                à sa fiche individuelle</h3>
+        </section>
+
+        <section>
+            <div id="formulaire">
+                <form method="post" action="recherche">
+                    <select id="formation" name="formation" size="1">
+                        <option value="">--Rechercher par formation--</option>
+                        <option value="DevWeb">TP Développeur Web</option>
+                    </select>
+                    <label for="annee"></label>
+                    <select id="annee" name="annee" size="1">
+                        <option value="">--Année--</option>
+                        <option value="2019">2019</option>
+                    </select>
+                    <input id="bouton" type="submit" value="GO">
+                </form>
+            </div>
+        </section>
+
+        <section>
+
+            <fieldset id="field"><legend>Résultat de la recherche</legend>
+                <table id="resultat">
+                    <tr id="nomColonne">
+                        <td id="searchNom">Nom</td>
+                        <td id="searchPrenom">Prénom</td>
+                        <td id="searchFormation">Formation suivie</td>
+                        <td id="searchAvatar">Avatar</td>
+                    </tr>
+
+                    <tr id="liste">
+                        <a id="res1" href="#">
+                            <td>Jean</td>
+                            <td>Dupont</td>
+                            <td>TP DEV WEB</td>
+                            <td><img src="#" alt="avatar"></td>
+                        </a>
+                    </tr>
+                </table>
+            </fieldset>
+
+        </section>
+
+
+    </main>
+
+    <footer>
+        <a href="#" id="mentions">Mentions Légales</a>
+        <div id="texte">Site réalisé en 2019 par la formation TP Développeur Web</div>
+    </footer>
+{% endblock %}

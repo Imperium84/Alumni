@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Greta{% endblock %}</title>
+        {% block stylesheets %}<link rel="stylesheet" type="text/css" href="{{ asset('style/style.css') }}"/>{% endblock %}
+    </head>
+    <body>
+
+        <header>
+            <div id="logoCacher"> <img id="logo" src="{{ asset('img/greta.png') }}" alt="logo"></div>
+            <div id="identifiant">
+                <img id="avatar" src="{{ asset('img/avatar.svg') }}" alt="avatar">
+                <p>Bonjour <b>Nom Prénom</b>  !</p>
+
+            </div>
+
+            <div id="centreHeader"> <img id="logo" src="{{ asset('img/greta2.png') }}" alt="logo"></div>
+
+            <nav id="menu">
+                <ul>
+                    <a href="#"><li>Accueil</li></a>
+                    <a href="#"><li>Mon compte</li></a>
+                    <a href="#"><li>Déconnexion</li></a>
+                </ul>
+            </nav>
+        </header>
+
+    {% block body %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+    </body>
+
+
+</html>
+
