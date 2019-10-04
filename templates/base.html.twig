@@ -8,9 +8,9 @@
     <body>
 
         <header>
-            <div id="logoCacher"> <img id="logo" src="{{ asset('img/greta.png') }}" alt="logo"></div>
+            <div id="logoCacher"> <a href="/avatar"><img id="logo" src="{{ asset('img/greta.png') }}" alt="logo"></a></div>
             <div id="identifiant">
-                <img id="avatar" src="{{ asset('img/avatar.svg') }}" alt="avatar">
+                <a href="/avatar"><img id="avatar" src={{ asset('upload/avatar/6d6fa8c8d9e6edc65b97a6a84e36622b80854931.svg') }} alt="avatar"/></a>
                 <p>Bonjour <b>Nom Prénom</b>  !</p>
 
             </div>
@@ -19,7 +19,7 @@
 
             <nav id="menu">
                 <ul>
-                    <a href="#"><li>Accueil</li></a>
+                    <a href="/"><li>Accueil</li></a>
                     <a href="#"><li>Mon compte</li></a>
                     <a href="#"><li>Déconnexion</li></a>
                 </ul>

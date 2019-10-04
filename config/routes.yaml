@@ -2,6 +2,14 @@
 #    path: /
 #    controller: App\Controller\HomeController::index
 
+#requetes:
+#    path: /requete
+#    controller: App\Controller\HomeController::requete
+
+avatar:
+    path: /avatar
+    controller: App\Controller\AvatarController::getAvatar
+
 controllers:
   resource: '../src/Controller/'
   type:     annotation
