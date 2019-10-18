@@ -9,40 +9,61 @@
 
         <section>
             <div id="formulaire">
-                <form method="post" action="{{ path('requetes') }}">
+                <form method="post" action="{{ path('index') }}">
                     <select id="formation" name="formation" size="1">
-                        <option value="">--Rechercher par formation--</option>
-                        <option value="DevWeb">TP Développeur Web</option>
+                        <option value="">-- Rechercher une formation --</option>
+                        {% for formation in degrees %}
+                        <option value="{{ formation.id }}">{{ formation.name }}</option>
+                        {% endfor %}
                     </select>
                     <label for="annee"></label>
                     <select id="annee" name="annee" size="1">
-                        <option value="">--Année--</option>
-                        <option value="2019">2019</option>
+                        <option value="">-- Année --</option>
+                        {% for year in years %}
+                            <option value="{{ year.id }}">{{ year.title }}</option>
+                        {% endfor %}
                     </select>
                     <input id="bouton" type="submit" value="GO">
                 </form>
             </div>
         </section>
 
-        <section>
+        <section id="tableau">
 
-            <fieldset id="field"><legend>Résultat de la recherche</legend>
+            {% if theYear is not empty %}
+            <div>
+                <p>Formation:<b>{{ theYear.title }}</b></p>
+                <p>Année:<b>{{ theDegree.name }}</b></p>
+            </div>
+            {% endif %}
+
+            <fieldset id="field">
+                <legend>Résultat de la recherche</legend>
                 <table id="resultat">
                     <tr id="nomColonne">
-                        <td id="searchNom">Nom</td>
-                        <td id="searchPrenom">Prénom</td>
-                        <td id="searchFormation">Formation suivie</td>
-                        <td id="searchAvatar">Avatar</td>
+                        <th id="searchNom">Nom</th>
+                        <th id="searchPrenom">Prénom</th>
+                        <th id="searchFormation">Formation suivie</th>
+                        <th id="searchAvatar">Avatar</th>
                     </tr>
 
-                    <tr id="liste">
-                        <a id="res1" href="#">
-                            <td>Jean</td>
-                            <td>Dupont</td>
-                            <td>TP DEV WEB</td>
-                            <td><img src="#" alt="avatar"></td>
+                    {% if resultat is not empty %}
+                        {% for res in resultat %}
+                        <a href="#" class="lienProfil">
+                            <tr id="liste">
+                                    <td>{{ res.lastname }}</td>
+                                    <td>{{ res.firstname }}</td>
+                                    <td>
+                                        {%  for promo in res.promotions %}
+                                        <span class="promo">{{ promo.degree.name }}</span>
+                                        {% endfor %}
+                                    </td>
+                                    <td class="searchAvatar"><img src={{asset('upload/avatar/'~res.avatar) }} alt="avatar"></td>
+                            </tr>
                         </a>
-                    </tr>
+                        {% endfor %}
+                    {% endif %}
+
                 </table>
             </fieldset>
 

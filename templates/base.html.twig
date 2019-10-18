@@ -10,7 +10,7 @@
         <header>
             <div id="logoCacher"> <a href="/avatar"><img id="logo" src="{{ asset('img/greta.png') }}" alt="logo"></a></div>
             <div id="identifiant">
-                <a href="/avatar"><img id="avatar" src={{ asset('upload/avatar/6d6fa8c8d9e6edc65b97a6a84e36622b80854931.svg') }} alt="avatar"/></a>
+                <a href="/avatar"><img id="avatar" src={{asset('upload/avatar/'~user.avatar) }} alt="avatar"/></a>
                 <p>Bonjour <b>Nom Prénom</b>  !</p>
 
             </div>
