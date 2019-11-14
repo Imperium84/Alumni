@@ -3,6 +3,7 @@ namespace App\Controller;
 use App\Service\Avatar\SvgAvatarFactory;
 use App\Service\Helpers\FileSystemHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+//use Symfony\Component\Routing\Annotation\Route;
 
 
 class AvatarController extends AbstractController

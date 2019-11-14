@@ -34,6 +34,7 @@ class HomeController extends AbstractController
             $formations = $request->request->get("formation");
             $annees = $request->request->get("annee");
 
+
             $degree = $degreeRepo->find($formations);
             $year = $yearsRepo->find($annees);
 
