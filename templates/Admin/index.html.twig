@@ -42,10 +42,15 @@
                     </p>
                 {% for degree in degrees %}
                     <div class="uneDiv">
-                        <span class="para">{{ degree.name }}</span>
+                        <span id = "degree-{{ degree.id }}" class="para">{{ degree.name }}</span>
                         <span class="icones">
-                                <img src="{{ asset('img/edit.png') }}" alt="modifier">
+                                 <a href="{{path('admin.degree.edit', {'id':degree.id}) }}">
+                                     <img src="{{ asset('img/edit.png') }}" alt="modifier">
+                                 </a>
+                            <a class="delete" href="{{ path('admin.degree.delete', {'id': degree.id}) }}">
                                 <img src="{{ asset('img/remove.png') }}" alt="supprimer">
+                            </a>
+
                             </span>
                     </div>
 
@@ -60,10 +65,14 @@
                     </p>
                 {% for year in years %}
                     <div class="uneDiv">
-                        <span class="para">{{ year.title }}</span>
+                        <span id="year-{{ year.id }}" class="para">{{ year.title }}</span>
                         <span class="icones">
-                                <img src="{{ asset('img/edit.png') }}" alt="modifier">
-                                <img src="{{ asset('img/remove.png') }}" alt="supprimer">
+                                <a href="{{path('admin.year.editYear', {'id':year.id}) }}">
+                                     <img src="{{ asset('img/edit.png') }}" alt="modifier">
+                                 </a>
+                                 <a class="delete" href="{{ path('admin.year.delete', {'id': year.id}) }}">
+                                     <img src="{{ asset('img/remove.png') }}" alt="supprimer">
+                                 </a>
                         </span>
                     </div>
 
@@ -78,10 +87,14 @@
                     </p>
                     {% for promo in promotions %}
                         <div class="uneDiv">
-                            <span class="para">{{ promo.degree.name }} {{ promo.year.title }}</span>
+                            <span id= 'promo-{{ promo.id }}' class="para">{{ promo.degree.name }} {{ promo.year.title }}</span>
                             <span class="icones">
-                                <img src="{{ asset('img/edit.png') }}" alt="modifier">
-                                <img src="{{ asset('img/remove.png') }}" alt="supprimer">
+                                <a href="{{path('admin.promotions.editPromotions', {'id':promo.id})}}">
+                                     <img src="{{ asset('img/edit.png') }}" alt="modifier">
+                                 </a>
+                                 <a class="delete" href="{{ path('admin.promo.delete', {'id': promo.id}) }}">
+                                    <img src="{{ asset('img/remove.png') }}" alt="supprimer">
+                                </a>
                         </span>
                         </div>
 
@@ -89,6 +102,17 @@
                 </div>
             </div>
         </section>
+
+        {% if app.session.flashbag.peek("success") | length > 0 %}
+            {% for message in app.flashes("success") %}
+                <div class="alert alert-success alert-dismissible fade show">
+                    {{ message }}
+                    <button type="button" class="close" data-dissmiss="abort" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
 
 {#        Formation#}
         <div class="modal fade" id="modalForma" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -100,7 +124,7 @@
                     </div>
                     <div class="modal-body">
                         {{ form_start(form) }}
-                        {{ form_row(form.names) }}
+                        {{ form_row(form.name) }}
                         <input type="submit" value="Ok">
                         {{ form_end(form) }}
                     </div>
@@ -117,11 +141,10 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form class="form" name="addYears" action="{{ path('admin.year.new') }}" method="post">
-{#                            <label for="nomYears">Année à ajouter (ex: 2010/2011)</label>#}
-{#                            <input type="text" name="nomYears" id="nomYears">#}
-{#                            <input type="submit" value="Ok">#}
-                        </form>
+                        {{ form_start(formYears) }}
+                        {{ form_row(formYears.title) }}
+                        <input type="submit" value="Ok">
+                        {{ form_end(formYears) }}
                     </div>
                 </div>
             </div>
@@ -136,15 +159,11 @@
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <form class="form" name="addPromo" action="{{ path('admin.promotion.new') }}" method="post">
-{#                            <label for="nomPromo">Nom de la Promotion:</label>#}
-{#                            <input type="text" name="nomPromo" id="nomPromo">#}
-
-{#                            <label for="datePromo">Année de la promotion:</label>#}
-{#                            <input type="text" name="datePromo" id="datePromo">#}
-
-                            <input type="submit" value="Ok">
-                        </form>
+                        {{ form_start(formPromo) }}
+                        {{ form_row(formPromo.degree) }}
+                        {{ form_row(formPromo.year) }}
+                        <input type="submit" value="Ok">
+                        {{ form_end(formPromo) }}
                     </div>
                 </div>
             </div>

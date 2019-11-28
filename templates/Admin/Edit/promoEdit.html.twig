@@ -1,0 +1,10 @@
+{% extends "Admin/base.html.twig" %}
+{% block body %}
+    <div class="edition">
+        {{ form_start(formPromo) }}
+        {{ form_row(formPromo.degree) }}
+        {{ form_row(formPromo.year) }}
+        <input type="submit" value="Ok">
+        {{ form_end(formPromo) }}
+    </div>
+{% endblock %}

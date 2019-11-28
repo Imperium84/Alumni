@@ -1,11 +1,37 @@
-// console.log("hello");
-let titres = document.getElementsByClassName("ajouter");
-for (let i=0; i<titres.length; i++)
+function onClickDelete(e)
 {
-    titres[i].addEventListener("click", ajouterDegree);
+    let confirm = window.confirm("Etes vous sur de vouloir supprimer l'élément sélectionné?");
+
+    if (confirm)
+    {
+        let id = $(this).parents('.para').attr('id');
+        console.log(id);
+
+        $.post(e.currentTarget.href, (reponse) => {
+
+            const elt = document.getElementById(id);
+            elt.parentNode.removeChild(elt);
+        });
+    }
+
+    else
+    {
+        e.preventDefault();
+    }
 }
 
-function ajouterDegree()
+
+let hash = window.location.hash;
+if (hash)
 {
-    console.log("hello world");
+    // console.log(hash);
+    $(`.nav-tabs a[href="${hash}"]`).tab('show');
 }
+
+const deleteButtons = document.getElementsByClassName("delete");
+for (let i=0; i<deleteButtons.length; i++)
+{
+    deleteButtons[i].addEventListener("click", onClickDelete);
+}
+
+
