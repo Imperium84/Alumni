@@ -51,21 +51,25 @@
                         {% for res in resultat %}
 
                             <a href="{{path('alumni.index',{"id":res.id,"slug":res.slug})}}" class="lienProfil">
-                            <dd class="liste">
+                                <dd class="liste">
 
-                                <li>{{ res.lastname }}</li>
+                                    <li>{{ res.lastname }}</li>
 
 
-                                <li>{{ res.firstname }}</li>
+                                    <li>{{ res.firstname }}</li>
 
-                                <li>
-                                    {%  for promo in res.promotions %}
-                                        <span class="promo">{{ promo.degree.name }}</span>
-                                    {% endfor %}
-                                </li>
-                                <li class="searchAvatar"><img src={{asset('upload/avatar/'~res.avatar) }} alt="avatar"></li>
-                            </dd>
+
+                                    <li>
+                                        {%  for promo in res.promotions %}
+
+                                                <span class="promo">{{ promo.degree.name }}</span>
+
+                                        {% endfor %}
+                                    </li>
+                                    <li class="searchAvatar"><img src={{asset('upload/avatar/'~res.avatar) }} alt="avatar"></li>
+                                </dd>
                             </a>
+
                         {% endfor %}
                     {% endif %}
 

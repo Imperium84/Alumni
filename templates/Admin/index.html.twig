@@ -87,7 +87,15 @@
                     </p>
                     {% for promo in promotions %}
                         <div class="uneDiv">
-                            <span id= 'promo-{{ promo.id }}' class="para">{{ promo.degree.name }} {{ promo.year.title }}</span>
+                            <span id= 'promo-{{ promo.id }}' class="para">
+                                <ul>
+                                    <li> {{ promo.degree.name }}</li>
+                                    <li> {{ promo.startDate | date('d-m-Y') }}</li>
+                                    <li> {{ promo.endDate | date('d-m-Y') }}</li>
+                                    <li> {{ promo.notes }}</li>
+                                </ul>
+
+                            </span>
                             <span class="icones">
                                 <a href="{{path('admin.promotions.editPromotions', {'id':promo.id})}}">
                                      <img src="{{ asset('img/edit.png') }}" alt="modifier">

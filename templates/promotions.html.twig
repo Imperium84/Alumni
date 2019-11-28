@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <ul class="listePromo">
+        {%  for promo in promotions %}
+            <li>
+                <a href="{{ path('fichePromo.index', {"id":promo.id}) }}">
+                    {{ promo.degree.name }}
+                    {{ promo.year.title }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+{% use "footer.html.twig" %}

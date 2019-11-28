@@ -80,6 +80,7 @@ class AdminController extends AbstractController
             ]);
         }
 
+
         return $this->render('admin/index.html.twig',
             [
                 'degrees'=>$degrees,

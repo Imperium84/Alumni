@@ -210,11 +210,7 @@ main
     font-family: "handwriting-draft_free-versRg", serif;
     line-height: 2.5em;
     /*display: inline-block;*/
-}
-
-#resultats span
-{
-    text-align: right;
+    border-bottom: 1px solid black;
 }
 
 .icones img

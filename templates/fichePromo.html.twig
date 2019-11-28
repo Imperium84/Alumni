@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <div class="promo"~{{ promo.id }}>
+        <h1>{{ promo.degree.name }}</h1>
+        <p>{{ promo.year.title }}</p>
+        <p>{{ promo.startDate|date('d/m/y') }}</p>
+        <p>{{ promo.endDate|date('d/m/y') }}</p>
+        <p>{{ promo.notes }}</p>
+    </div>
+
+{% endblock %}
+{% use "footer.html.twig" %}
